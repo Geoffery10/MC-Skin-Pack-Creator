@@ -62,10 +62,29 @@ def copySkins(skinsArr):
 def spaceAndTooLower(name):
     name = name.replace(" ", "").lower
     return name
+
+def generateManifest(packName, uuidA, version, uuidB):
+    manifest_file = open("./Output/manifest.json", 'w+')
+    temp = "{\n\t\"format_version\": 1,\n\t\"header\": {\n\t\t\"name\": \"" + \
+                                                                     packName + "\",\n\t\t\"uuid\": \"" + uuidA + \
+                                                                     "\",\n\t\t\"version\": [\n\t\t\t" +  \
+                                                                                              str(version[0]) + ",\n\t\t\t" + \
+                                                                                              str(version[1]) + ",\n\t\t\t" + \
+                                                                                              str(version[2]) + "\n\t\t]" + \
+                                                                                             "\n\t},\n\t\"modules\": [\n\t\t{\n\t\t\t\"type\": \"skin_pack\"," \
+                                                                                             "\n\t\t\t\"uuid\": \"" + uuidB + "\",\n\t\t\t\"version\": [" \
+                                                                                             "\n\t\t\t\t6,\n\t\t\t\t" + \
+                                                                                             "0,\n\t\t\t\t" + \
+                                                                                              "0\n\t\t\t]\n\t\t}\n\t]\n}"
+    manifest_file.write(temp)
+    manifest_file.close
+    
   
 #==============================DRIVER CODE=====================================
 
 #Variables
+lang_id = "en_US"
+version = [2, 0, 0]
 uuidA = ""
 creator = ""
 packName = ""
@@ -79,6 +98,7 @@ print("\nMinecraft Skin Pack Creator\n    by Geoffery Powell\n")
 #Create Directories If Missing
 checkForDir(".\Skins")
 checkForDir(".\Output")
+checkForDir(".\Output/texts")
 
 #Count Skins (This should only look for PNGs)
 numberOfSkins = sum([len(files) for r, d, files in os.walk(".\Skins")])
@@ -108,6 +128,16 @@ else:
         print( "Name:", obj.name,"- File:", obj.file, "- Body Type:", obj.bodyType, sep =' ' )
         
     #Time to make the files
+    #Copy Skins
     copySkins(skinsArr)
+    #Write to Files
+    generateManifest(packName, uuidA, version, uuidB)
+    pack_manifest_file = open("./Output/pack_manifest.json", 'w+')
+    pack_manifest_file.close
+    skins_file = open("./Output/skins.json", 'w+')
+    skins_file.close
+    langs_file = open("./Output/texts/" + lang_id, 'w+')
+    langs_file.close
+    
     
     
