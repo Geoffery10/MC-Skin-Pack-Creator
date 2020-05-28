@@ -1,0 +1,23 @@
+{
+    "format_version": 1,
+    "header": {
+        "name": "Geoffery V6 Skins",
+        "uuid": "dab828f6-05b9-4efd-82c2-f4bcd0d448a9",
+        "version": [
+            2,
+            0,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "type": "skin_pack",
+            "uuid": "95a5b019-7dd6-43c2-b1a3-662e08ab022f",
+            "version": [
+                6,
+                0,
+                0
+            ]
+        }
+    ]
+}
