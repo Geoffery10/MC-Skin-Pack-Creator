@@ -1,2 +1,4 @@
-.png
-.mcpack
+*.png
+*.mcpack
+*.lang
+*.json
