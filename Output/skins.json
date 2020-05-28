@@ -1,0 +1,116 @@
+{
+	"geometry": "skinpacks/skins.json",
+	"skins": [
+		{
+			"localization_name": "thrawn",
+			"geometry": "geometry.humanoid.customSlim",
+			"texture": "admiralthrawn.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "android",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "androidv1.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "charliebrown",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "charliebrown.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "cooliron",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "cooliron.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "creepersuit",
+			"geometry": "geometry.humanoid.customSlim",
+			"texture": "creepersuit.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "enderman",
+			"geometry": "geometry.humanoid.customSlim",
+			"texture": "enderman.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "facebook",
+			"geometry": "geometry.humanoid.customSlim",
+			"texture": "facebook.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "fg",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "fg.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "fgshade",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "fgshade.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "gus",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "gus.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "irongiant",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "irongiant 1.3.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "johncusackadventurer",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "johncusackadventurer.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "lloyddobler",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "lloyddobler.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "nacho",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "nacho.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "nathanfillion",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "nathanfillion.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "penguin",
+			"geometry": "geometry.humanoid.customSlim",
+			"texture": "penguin.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "watson",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "watson.png",
+			"type": "free"
+		},
+		{
+			"localization_name": "whiteguy",
+			"geometry": "geometry.humanoid.custom",
+			"texture": "whiteguy.png",
+			"type": "free"
+		}
+
+	],
+	"serialize_name": "Old Skins",
+	"localization_name": "Geoffery"
+}
