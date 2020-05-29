@@ -130,7 +130,7 @@ def makeMCPACK(packName, skinsArr, lang_id):
         zipObj.write("./Temp/pack_manifest.json", basename("./Temp/pack_manifest.json"))
         zipObj.write("./Temp/skins.json", basename("./Temp/skins.json"))
         zipObj.write("./Temp/texts", basename("./Temp/texts"))
-        zipObj.write("./Temp/texts/" + lang_id, "texts/" + lang_id)
+        zipObj.write("./Temp/texts/" + lang_id + ".lang", "texts/" + lang_id + ".lang")
     zipObj.close()
 
     
