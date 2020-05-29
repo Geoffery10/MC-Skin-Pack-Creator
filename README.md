@@ -8,6 +8,7 @@
 ## Table of Contents
 * [Getting Started](https://github.com/Geoffery10/MC-Skin-Pack-Creator#getting-started)
   * [Prerequisites](https://github.com/Geoffery10/MC-Skin-Pack-Creator#prerequisites)
+  * [File Stucture](https://github.com/Geoffery10/MC-Skin-Pack-Creator#file-stucture)
 * [Built With](https://github.com/Geoffery10/MC-Skin-Pack-Creator#built-with)
 * [Authors](https://github.com/Geoffery10/MC-Skin-Pack-Creator#authors)
 * [License and Acknowledgments](https://github.com/Geoffery10/BMC-Skin-Pack-Creator#license)
@@ -25,6 +26,14 @@
 ### Prerequisites
 
 * [Python 3.8.1](https://www.python.org/downloads/)
+
+### File Stucture
+```
+Folder
+|-- skin_pack_maker.py
+`-- Skins
+    `-- {YOUR SKINS HERE}
+```
 
 ## Built With
 
