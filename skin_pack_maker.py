@@ -127,7 +127,7 @@ def makeMCPACK(packName):
                 #create complete filepath of file in directory
                 filePath = os.path.join(folderName, filename)
                 # Add file to zip
-                zipObj.write(filePath, basename(filePath))
+                zipObj.write(filePath, filePath)
 
     
     
