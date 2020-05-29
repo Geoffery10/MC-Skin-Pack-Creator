@@ -203,6 +203,7 @@ else:
     #CODE HERE
     makeMCPACK(packName, skinsArr, lang_id)
     print("Packed into .mcpack file")
+    shutil.rmtree("./Temp")
     print("\n\tDONE!")
     
     
