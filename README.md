@@ -14,15 +14,16 @@
 
 
 ## Getting Started
-* First clone the repository or download the zipped files from releases. 
+* First clone the repository or download the zipped files from [releases](https://github.com/Geoffery10/MC-Skin-Pack-Creator/releases). 
 * Export them into a folder alone. 
 * Add skins to the Skins folder (create one if missing)
 * Open command prompt or terminal depending on your platform. 
-  * On Windows open a command prompt in the folder. [How To](https://www.thewindowsclub.com/how-to-open-command-prompt-from-right-click-menu/)
+  * On Windows open a command prompt in the folder. [How To Open Command Prompt Anywhere](https://www.thewindowsclub.com/how-to-open-command-prompt-from-right-click-menu/)
 * Type "skin_pack_maker.py" and follow the on screen instructions
 * Once completed you will have a .mcpack the you can open to automatically add the pack to minecraft!
 
 ### Prerequisites
+
 * [Python 3.8.1](https://www.python.org/downloads/)
 
 ## Built With
