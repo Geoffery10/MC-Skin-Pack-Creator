@@ -118,16 +118,20 @@ def generateLangs(creator, skinsArr, lang_id, packName):
     langs_file.write(temp)
     langs_file.close
     
-def makeMCPACK(packName):
+def makeMCPACK(packName, skinsArr, lang_id):
     # create a ZipFile object
     with ZipFile(packName + ".mcpack", 'w') as zipObj:
-        # Iterate over all the files in directory
-        for folderName, subfolders, filenames in os.walk(".\Temp"):
-            for filename in filenames:
-                #create complete filepath of file in directory
-                filePath = os.path.join(folderName, filename)
-                # Add file to zip
-                zipObj.write(filePath, filePath)
+        for obj in skinsArr:
+            #Save Skins
+            filePath = "./Temp/" + obj.file
+            zipObj.write(filePath, basename(filePath))
+        #Save text files
+        zipObj.write("./Temp/manifest.json", basename("./Temp/manifest.json"))
+        zipObj.write("./Temp/pack_manifest.json", basename("./Temp/pack_manifest.json"))
+        zipObj.write("./Temp/skins.json", basename("./Temp/skins.json"))
+        zipObj.write("./Temp/texts", basename("./Temp/texts"))
+        zipObj.write("./Temp/texts/" + lang_id, "texts/" + lang_id)
+    zipObj.close()
 
     
     
@@ -197,7 +201,7 @@ else:
     print("Created " + lang_id + ".lang")
     #Pack Zip
     #CODE HERE
-    makeMCPACK(packName)
+    makeMCPACK(packName, skinsArr, lang_id)
     print("Packed into .mcpack file")
     print("\n\tDONE!")
     
