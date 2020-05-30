@@ -113,7 +113,7 @@ def generateLangs(creatorID, skinsArr, lang_id, packName):
     temp = ""
     for obj in skinsArr:
         name = spaceAndTooLower(obj.name)
-        temp = temp + "skins." + creatorID + "." + name + "=" + obj.name + "\n"
+        temp = temp + "skin." + creatorID + "." + name + "=" + obj.name + "\n"
     temp = temp + "skinpack." + creatorID + "=" + packName
     langs_file.write(temp)
     langs_file.close
