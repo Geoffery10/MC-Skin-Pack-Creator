@@ -15,23 +15,26 @@
 
 
 ## Getting Started
-* First clone the repository or download the zipped files from [releases](https://github.com/Geoffery10/MC-Skin-Pack-Creator/releases). 
+* [Make sure your prerequisites are done before beginning.](https://github.com/Geoffery10/MC-Skin-Pack-Creator#prerequisites)
+* Download the latest zip file from [releases](https://github.com/Geoffery10/MC-Skin-Pack-Creator/releases). 
 * Export them into a folder alone. 
 * Add skins to the Skins folder (create one if missing)
-* Open command prompt or terminal depending on your platform. 
+* Run the skin_pack_maker.exe or open the command prompt or terminal depending on your platform and type "skin_pack_maker.py". 
   * On Windows open a command prompt in the folder. [How To Open Command Prompt Anywhere](https://www.thewindowsclub.com/how-to-open-command-prompt-from-right-click-menu/)
-* Type "skin_pack_maker.py" and follow the on screen instructions
+* Follow the on screen instructions to create your pack.
 * Once completed you will have a .mcpack the you can open to automatically add the pack to minecraft!
 
 ### Prerequisites
 
 * [Python 3.8.1](https://www.python.org/downloads/)
+* bs4 - type "pip install bs4" in the command line or terminal
 * Internet (Recommended for Automatic UUID Generation)
 
 ### File Stucture
 ```
 Folder
 |-- skin_pack_maker.py
+|-- skin_pack_maker.exe
 `-- Skins
     `-- {YOUR SKINS HERE}
 ```
@@ -39,6 +42,7 @@ Folder
 ## Built With
 
 * [Python 3.8.1](https://www.python.org/downloads/) - Built in Spyder
+* [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
 
 ## Authors
 
