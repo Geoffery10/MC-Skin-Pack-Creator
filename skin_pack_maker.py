@@ -194,7 +194,9 @@ else:
         #Internet UUID
         from bs4 import BeautifulSoup
         uuidA = getUUID(1)
+        uuidA = uuidA[:-1]
         uuidB = getUUID(2)
+        uuidB = uuidB[:-1]
         print("Success!")
     except:
         #Manual UUID
