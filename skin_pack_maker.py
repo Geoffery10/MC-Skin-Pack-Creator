@@ -144,7 +144,8 @@ def getUUID(id_value):
     print("Genereated: UUID", id_value, ": ", results, end = '')
     return str(results)
 
-    
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')    
     
   
 #==============================DRIVER CODE=====================================
@@ -162,6 +163,7 @@ numberOfSkins = 0 #The number of skins in the skins folder
 
 
 #Print Header
+cls()
 print("\nMinecraft Skin Pack Creator\n    by Geoffery Powell\n")
 
 #Create Directories If Missing
