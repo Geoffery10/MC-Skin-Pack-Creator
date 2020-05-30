@@ -23,6 +23,8 @@ import os
 import shutil
 from os.path import basename
 from zipfile import ZipFile
+import requests
+from bs4 import BeautifulSoup
 
 #================================CLASSES=======================================
 
@@ -132,6 +134,14 @@ def makeMCPACK(packName, skinsArr, lang_id):
         zipObj.write("./Temp/texts", basename("./Temp/texts"))
         zipObj.write("./Temp/texts/" + lang_id + ".lang", "texts/" + lang_id + ".lang")
     zipObj.close()
+    
+def getUUID(id_value):
+    UUID_API = "https://www.uuidgenerator.net/api/version4"
+    response = requests.get(UUID_API)
+    soup = BeautifulSoup(response.text, 'html.parser') 
+    results = soup.prettify()
+    print("Genereated: UUID", id_value, ": ", results, end = '')
+    return str(results)
 
     
     
@@ -141,6 +151,7 @@ def makeMCPACK(packName, skinsArr, lang_id):
 #Variables
 lang_id = "en_US" #This should be set by the user in final version
 version = [2, 0, 0] #I believe this is the pack version
+
 uuidA = ""
 uuidB = ""
 creator = ""
@@ -175,9 +186,16 @@ else:
     creator = input("\nPlease your name: ")
     packName = input("Please your pack's name: ")
     description = input("Please your pack's description: ")
-    print("\nRecommended UUIDD Generator: https://www.uuidgenerator.net/version4")
-    uuidA = input("Please your first UUID: ")
-    uuidB = input("Please your second UUID: ")
+    print("Trying to get UUID from the internet...")
+    try:
+        uuidA = getUUID(1)
+        uuidB = getUUID(2)
+        print("Success!")
+    except:
+        print("Failed to get UUID from the internet... ")
+        print("Recommended UUID Generator: https://www.uuidgenerator.net/version4")
+        uuidA = input("Please your first UUID: ")
+        uuidB = input("Please your second UUID: ")
     
     #Get skin info
     skinsArr = createSkins(skinFiles)
