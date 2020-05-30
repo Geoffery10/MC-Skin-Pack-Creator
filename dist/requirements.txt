@@ -1,0 +1,3 @@
+Requirements to run:
+	* Python 3 - https://www.python.org/downloads/
+	* bs4 - type "pip install BeautifulSoup4" in the command line or terminal
