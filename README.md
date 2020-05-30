@@ -26,12 +26,14 @@
 ### Prerequisites
 
 * [Python 3.8.1](https://www.python.org/downloads/)
+* bs4 - type "pip install bs4" in the command line or terminal
 * Internet (Recommended for Automatic UUID Generation)
 
 ### File Stucture
 ```
 Folder
 |-- skin_pack_maker.py
+|-- skin_pack_maker.exe
 `-- Skins
     `-- {YOUR SKINS HERE}
 ```
