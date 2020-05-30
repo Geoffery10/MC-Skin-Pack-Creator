@@ -24,7 +24,6 @@ import shutil
 from os.path import basename
 from zipfile import ZipFile
 import requests
-from bs4 import BeautifulSoup
 
 #================================CLASSES=======================================
 
@@ -193,12 +192,14 @@ else:
     print("Trying to get UUID from the internet...")
     try:
         #Internet UUID
+        from bs4 import BeautifulSoup
         uuidA = getUUID(1)
         uuidB = getUUID(2)
         print("Success!")
     except:
         #Manual UUID
         print("Failed to get UUID from the internet... ")
+        print("You might be missing beautifulsoup4: https://pypi.org/project/beautifulsoup4/")
         print("Recommended UUID Generator: https://www.uuidgenerator.net/version4")
         uuidA = input("Please your first UUID: ")
         uuidB = input("Please your second UUID: ")
