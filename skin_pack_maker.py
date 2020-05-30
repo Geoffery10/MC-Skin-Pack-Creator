@@ -93,7 +93,7 @@ def generatePackManifest(uuidA, packName, version, description, uuidB):
     pack_manifest_file.write(temp)
     pack_manifest_file.close
     
-def generateSkins(skinsArr, packName, creator):
+def generateSkins(skinsArr, packName, creatorID):
     skins_file = open("./Temp/skins.json", 'w+')
     temp = "{\n\t\"geometry\": \"skinpacks/skins.json\",\n\t\"skins\": ["
     for obj in skinsArr:
@@ -103,18 +103,18 @@ def generateSkins(skinsArr, packName, creator):
         temp = temp + "\n\t\t{\n\t\t\t\"localization_name\": \"" + name + "\",\n\t\t\t\"geometry\": \"" + str(bodyType) + \
         "\",\n\t\t\t\"texture\": \"" + str(file) + "\",\n\t\t\t\"type\": \"free\"\n\t\t},"
     temp = temp[:-1]
-    temp = temp + "\n\n\t],\n\t\"serialize_name\": \"" + packName + "\",\n\t\"localization_name\": \"" + creator + "\"\n}"
+    temp = temp + "\n\n\t],\n\t\"serialize_name\": \"" + packName + "\",\n\t\"localization_name\": \"" + creatorID + "\"\n}"
     skins_file.write(temp)
     
     skins_file.close
     
-def generateLangs(creator, skinsArr, lang_id, packName): 
+def generateLangs(creatorID, skinsArr, lang_id, packName): 
     langs_file = open("./Temp/texts/" + lang_id + ".lang", 'w+')
     temp = ""
     for obj in skinsArr:
         name = spaceAndTooLower(obj.name)
-        temp = temp + "skins." + creator + "." + name + "=" + obj.name + "\n"
-    temp = temp + "skinpack." + creator + "=" + packName
+        temp = temp + "skins." + creatorID + "." + name + "=" + obj.name + "\n"
+    temp = temp + "skinpack." + creatorID + "=" + packName
     langs_file.write(temp)
     langs_file.close
     
@@ -144,6 +144,7 @@ version = [2, 0, 0] #I believe this is the pack version
 uuidA = ""
 uuidB = ""
 creator = ""
+creatorID = ""
 packName = ""
 description = ""
 numberOfSkins = 0 #The number of skins in the skins folder
@@ -186,6 +187,7 @@ else:
     for obj in skinsArr: 
         print( "Name:", obj.name,"- File:", obj.file, "- Body Type:", obj.bodyType, sep =' ' )
         
+    creatorID = (creator + uuidA[len(uuidA)-4:])
     #Time to make the files
     #Copy Skins
     copySkins(skinsArr)
@@ -195,9 +197,9 @@ else:
     print("Created manifest.json.")
     generatePackManifest(uuidA, packName, version, description, uuidB)
     print("Created pack_manifest.json.")
-    generateSkins(skinsArr, packName, creator)
+    generateSkins(skinsArr, packName, creatorID)
     print("Created skins.json.")
-    generateLangs(creator, skinsArr, lang_id, packName)
+    generateLangs(creatorID, skinsArr, lang_id, packName)
     print("Created " + lang_id + ".lang")
     #Pack Zip
     #CODE HERE
