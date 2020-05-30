@@ -26,6 +26,7 @@
 ### Prerequisites
 
 * [Python 3.8.1](https://www.python.org/downloads/)
+* Internet (Recommended for Automatic UUID Generation)
 
 ### File Stucture
 ```
@@ -50,3 +51,4 @@ Folder
 
 ## Acknowledgments
 * Minecraft
+* [Online UUID Generator](https://www.uuidgenerator.net/version4)
