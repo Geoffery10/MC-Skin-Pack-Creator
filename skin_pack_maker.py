@@ -46,7 +46,7 @@ def createSkins(skinFiles):
         print("\n\tCurrent Skin:", i)
         file = i
         name = input("\nPlease skin name: ")
-        bodyValue = int(input("\nPlease body type (0 for Steve and 1 for Alex/Slim): "))
+        bodyValue = int(input("Please body type (0 for Steve and 1 for Alex/Slim): "))
         bodyType = convertBodyValue(bodyValue)
         skins.append(skin(name, file, bodyType))
         
@@ -136,6 +136,7 @@ def makeMCPACK(packName, skinsArr, lang_id):
     zipObj.close()
     
 def getUUID(id_value):
+    #Scrape UUID from Online UUID Generator's Developer API
     UUID_API = "https://www.uuidgenerator.net/api/version4"
     response = requests.get(UUID_API)
     soup = BeautifulSoup(response.text, 'html.parser') 
@@ -151,7 +152,6 @@ def getUUID(id_value):
 #Variables
 lang_id = "en_US" #This should be set by the user in final version
 version = [2, 0, 0] #I believe this is the pack version
-
 uuidA = ""
 uuidB = ""
 creator = ""
@@ -186,12 +186,16 @@ else:
     creator = input("\nPlease your name: ")
     packName = input("Please your pack's name: ")
     description = input("Please your pack's description: ")
+    
+    #Get UUID
     print("Trying to get UUID from the internet...")
     try:
+        #Internet UUID
         uuidA = getUUID(1)
         uuidB = getUUID(2)
         print("Success!")
     except:
+        #Manual UUID
         print("Failed to get UUID from the internet... ")
         print("Recommended UUID Generator: https://www.uuidgenerator.net/version4")
         uuidA = input("Please your first UUID: ")
