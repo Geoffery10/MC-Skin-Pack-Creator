@@ -42,6 +42,7 @@ Folder
 ## Built With
 
 * [Python 3.8.1](https://www.python.org/downloads/) - Built in Spyder
+* [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
 
 ## Authors
 
