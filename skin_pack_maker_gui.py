@@ -64,29 +64,3 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
         break
     print('You entered ', values[0], values[1], values[2])
-
-    print("Trying to get UUID from the internet...")
-    try:
-        #Internet UUID
-        from bs4 import BeautifulSoup
-        uuidA = getUUID(1)
-        uuidA = uuidA[:-1]
-        uuidB = getUUID(2)
-        uuidB = uuidB[:-1]
-        print("Success!")
-        layoutUUID = [  [sg.Text(uuidA)],
-                      [sg.Text(uuidB)],
-                      [sg.Button('Continue'), sg.Button('Cancel')] ]
-        windowUUID = sg.Window('Minecraft Skin Pack Creator', layoutUUID)
-        while True:
-            event, values = windowUUID.read()
-            window.close()
-            if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
-                break
-    except:
-            #Manual UUID
-            print("Failed to get UUID from the internet... ")
-            print("You might be missing beautifulsoup4: https://pypi.org/project/beautifulsoup4/")
-            print("Recommended UUID Generator: https://www.uuidgenerator.net/version4")
-            uuidA = input("Please your first UUID: ")
-            uuidB = input("Please your second UUID: ")
