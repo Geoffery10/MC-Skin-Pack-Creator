@@ -23,7 +23,7 @@ import os
 import shutil
 from os.path import basename
 from zipfile import ZipFile
-import requests
+import uuid
 
 #================================CLASSES=======================================
 
@@ -136,12 +136,9 @@ def makeMCPACK(packName, skinsArr, lang_id):
     
 def getUUID(id_value):
     #Scrape UUID from Online UUID Generator's Developer API
-    UUID_API = "https://www.uuidgenerator.net/api/version4"
-    response = requests.get(UUID_API)
-    soup = BeautifulSoup(response.text, 'html.parser') 
-    results = soup.prettify()
-    print("Genereated: UUID", id_value, ": ", results, end = '')
-    return str(results)
+    result = uuid.uuid4()
+    print("\nGenereated: UUID", id_value, ": ", result, end = '')
+    return str(result)
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')    
@@ -194,10 +191,8 @@ else:
         #Internet UUID
         from bs4 import BeautifulSoup
         uuidA = getUUID(1)
-        uuidA = uuidA[:-1]
         uuidB = getUUID(2)
-        uuidB = uuidB[:-1]
-        print("Success!")
+        print("\nSuccess!")
     except:
         #Manual UUID
         print("Failed to get UUID from the internet... ")
