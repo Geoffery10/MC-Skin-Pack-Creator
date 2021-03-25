@@ -52,4 +52,3 @@ Folder
 
 ## Acknowledgments
 * Minecraft
-* [Online UUID Generator](https://www.uuidgenerator.net/version4)
