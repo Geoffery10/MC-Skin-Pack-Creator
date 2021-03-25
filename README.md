@@ -27,8 +27,6 @@
 ### Prerequisites
 
 * [Python 3.8.1](https://www.python.org/downloads/)
-* bs4 - type "pip install bs4" or "pip install -r requirements.txt" in the command line or terminal (Recommended for Automatic UUID Generation)
-* Internet (Recommended for Automatic UUID Generation)
 
 ### File Stucture
 ```
@@ -42,7 +40,6 @@ Folder
 ## Built With
 
 * [Python 3.8.1](https://www.python.org/downloads/) - Built in Spyder
-* [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
 
 ## Authors
 
@@ -55,4 +52,3 @@ Folder
 
 ## Acknowledgments
 * Minecraft
-* [Online UUID Generator](https://www.uuidgenerator.net/version4)
