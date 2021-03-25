@@ -25,8 +25,7 @@ from os.path import basename
 from zipfile import ZipFile
 import uuid
 
-
-# ================================CLASSES=======================================
+#================================CLASSES=======================================
 
 class skin:
     def __init__(self, name, file, bodyType):
@@ -34,13 +33,11 @@ class skin:
         self.file = file
         self.bodyType = bodyType
 
-
-# ================================METHODS=======================================
+#================================METHODS=======================================
 
 def checkForDir(path):
     if not os.path.exists(path):
         os.mkdir(path)
-
 
 def createSkins(skinFiles):
     skins = []
@@ -51,10 +48,9 @@ def createSkins(skinFiles):
         bodyValue = int(input("Please body type (0 for Steve and 1 for Alex/Slim): "))
         bodyType = convertBodyValue(bodyValue)
         skins.append(skin(name, file, bodyType))
-
+        
     return skins
-
-
+        
 def convertBodyValue(bodyValue):
     if (bodyValue == 1):
         bodyType = "geometry.humanoid.customSlim"
@@ -62,49 +58,42 @@ def convertBodyValue(bodyValue):
         bodyType = "geometry.humanoid.custom"
     return bodyType
 
-
 def copySkins(skinsArr):
     for obj in skinsArr:
         shutil.copy("./Skins/" + obj.file, "./Temp/" + obj.file, follow_symlinks=True)
-
 
 def spaceAndTooLower(name):
     name = name.replace(" ", "")
     name = name.lower()
     return name
 
-
-# THESE 3 METHODS GENERATE THE FILES
+#THESE 3 METHODS GENERATE THE FILES
 
 def generateManifest(packName, uuidA, version, uuidB):
     manifest_file = open("./Temp/manifest.json", 'w+')
     temp = "{\n\t\"format_version\": 1,\n\t\"header\": {\n\t\t\"name\": \"" + \
-           packName + "\",\n\t\t\"uuid\": \"" + uuidA + \
-           "\",\n\t\t\"version\": [\n\t\t\t" + \
-           str(version[0]) + ",\n\t\t\t" + \
-           str(version[1]) + ",\n\t\t\t" + \
-           str(version[2]) + "\n\t\t]" + \
-           "\n\t},\n\t\"modules\": [\n\t\t{\n\t\t\t\"type\": \"skin_pack\"," \
-           "\n\t\t\t\"uuid\": \"" + uuidB + "\",\n\t\t\t\"version\": [" \
-                                            "\n\t\t\t\t6,\n\t\t\t\t" + \
-           "0,\n\t\t\t\t" + \
-           "0\n\t\t\t]\n\t\t}\n\t]\n}"
-
+    packName + "\",\n\t\t\"uuid\": \"" + uuidA + \
+    "\",\n\t\t\"version\": [\n\t\t\t" +  \
+    str(version[0]) + ",\n\t\t\t" + \
+    str(version[1]) + ",\n\t\t\t" + \
+    str(version[2]) + "\n\t\t]" + \
+    "\n\t},\n\t\"modules\": [\n\t\t{\n\t\t\t\"type\": \"skin_pack\"," \
+    "\n\t\t\t\"uuid\": \"" + uuidB + "\",\n\t\t\t\"version\": [" \
+    "\n\t\t\t\t6,\n\t\t\t\t" + \
+    "0,\n\t\t\t\t" + \
+    "0\n\t\t\t]\n\t\t}\n\t]\n}"
+    
     manifest_file.write(temp)
     manifest_file.close
-
-
+    
 def generatePackManifest(uuidA, packName, version, description, uuidB):
     pack_manifest_file = open("./Temp/pack_manifest.json", 'w+')
-    temp = "{\n\t\"header\": {\n\t\t\"pack_id\": \"" + uuidA + "\",\n\t\t\"name\": \"" + packName + "\",\n\t\t\"packs_version\": \"" + str(
-        version[0]) + \
-           "." + str(version[1]) + "." + str(version[
-                                                 2]) + "\",\n\t\t\"description\": \"" + description + "\",\n\t\t\"modules\": [\n\t\t\t{\n\t\t\t  \"description\": \""
+    temp = "{\n\t\"header\": {\n\t\t\"pack_id\": \"" + uuidA + "\",\n\t\t\"name\": \"" + packName + "\",\n\t\t\"packs_version\": \"" + str(version[0]) + \
+    "." + str(version[1]) + "." + str(version[2]) + "\",\n\t\t\"description\": \"" + description + "\",\n\t\t\"modules\": [\n\t\t\t{\n\t\t\t  \"description\": \""
     temp = temp + description + "\",\n\t\t\t  \"version\": \"6.0.0\",\n\t\t\t  \"uuid\": \"" + uuidB + "\",\n\t\t\t  \"type\": \"skin_pack\"\n\t\t\t}\n\t\t]\n\t}\n}"
     pack_manifest_file.write(temp)
     pack_manifest_file.close
-
-
+    
 def generateSkins(skinsArr, packName, creatorID):
     skins_file = open("./Temp/skins.json", 'w+')
     temp = "{\n\t\"geometry\": \"skinpacks/skins.json\",\n\t\"skins\": ["
@@ -112,17 +101,15 @@ def generateSkins(skinsArr, packName, creatorID):
         name = spaceAndTooLower(obj.name)
         bodyType = obj.bodyType
         file = obj.file
-        temp = temp + "\n\t\t{\n\t\t\t\"localization_name\": \"" + name + "\",\n\t\t\t\"geometry\": \"" + str(
-            bodyType) + \
-               "\",\n\t\t\t\"texture\": \"" + str(file) + "\",\n\t\t\t\"type\": \"free\"\n\t\t},"
+        temp = temp + "\n\t\t{\n\t\t\t\"localization_name\": \"" + name + "\",\n\t\t\t\"geometry\": \"" + str(bodyType) + \
+        "\",\n\t\t\t\"texture\": \"" + str(file) + "\",\n\t\t\t\"type\": \"free\"\n\t\t},"
     temp = temp[:-1]
     temp = temp + "\n\n\t],\n\t\"serialize_name\": \"" + packName + "\",\n\t\"localization_name\": \"" + creatorID + "\"\n}"
     skins_file.write(temp)
-
+    
     skins_file.close
-
-
-def generateLangs(creatorID, skinsArr, lang_id, packName):
+    
+def generateLangs(creatorID, skinsArr, lang_id, packName): 
     langs_file = open("./Temp/texts/" + lang_id + ".lang", 'w+')
     temp = ""
     for obj in skinsArr:
@@ -131,109 +118,103 @@ def generateLangs(creatorID, skinsArr, lang_id, packName):
     temp = temp + "skinpack." + creatorID + "=" + packName
     langs_file.write(temp)
     langs_file.close
-
-
+    
 def makeMCPACK(packName, skinsArr, lang_id):
     # create a ZipFile object
     with ZipFile(packName + ".mcpack", 'w') as zipObj:
         for obj in skinsArr:
-            # Save Skins
+            #Save Skins
             filePath = "./Temp/" + obj.file
             zipObj.write(filePath, basename(filePath))
-        # Save text files
+        #Save text files
         zipObj.write("./Temp/manifest.json", basename("./Temp/manifest.json"))
         zipObj.write("./Temp/pack_manifest.json", basename("./Temp/pack_manifest.json"))
         zipObj.write("./Temp/skins.json", basename("./Temp/skins.json"))
         zipObj.write("./Temp/texts", basename("./Temp/texts"))
         zipObj.write("./Temp/texts/" + lang_id + ".lang", "texts/" + lang_id + ".lang")
     zipObj.close()
-
-
+    
 def getUUID(id_value):
-    # Scrape UUID from Online UUID Generator's Developer API
+    #Scrape UUID from Online UUID Generator's Developer API
     result = uuid.uuid4()
-    print("\nGenereated: UUID", id_value, ": ", result, end='')
+    print("\nGenereated: UUID", id_value, ": ", result, end = '')
     return str(result)
 
-
 def cls():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name=='nt' else 'clear')    
+    
+  
+#==============================DRIVER CODE=====================================
 
-
-# ==============================DRIVER CODE=====================================
-
-# Variables
-lang_id = "en_US"  # This should be set by the user in final version
-version = [2, 0, 0]  # I believe this is the pack version
+#Variables
+lang_id = "en_US" #This should be set by the user in final version
+version = [2, 0, 0] #I believe this is the pack version
 uuidA = ""
 uuidB = ""
 creator = ""
 creatorID = ""
 packName = ""
 description = ""
-numberOfSkins = 0  # The number of skins in the skins folder
+numberOfSkins = 0 #The number of skins in the skins folder
 
-# Print Header
+
+#Print Header
 cls()
 print("\nMinecraft Skin Pack Creator\n    by Geoffery Powell\n")
 
-# Create Directories If Missing
+#Create Directories If Missing
 checkForDir(".\Skins")
 checkForDir(".\Temp")
 checkForDir(".\Temp/texts")
 
-# Count Skins (This should only look for PNGs)
-numberOfSkins = 0
-for file in os.listdir(".\Skins"):
-    if file.endswith(".png"):
-        numberOfSkins += 1
+#Count Skins (This should only look for PNGs)
+numberOfSkins = sum([len(files) for r, d, files in os.walk(".\Skins")])
 
 if (numberOfSkins <= 0):
-    # No skins!
+    #No skins!
     print("No skins found in Skins folder...")
 else:
-    # Display Found Skins
+    #Display Found Skins
     print("Skins in the \"Skins\" folder will be used.\n")
     print("\tNumber of Skins:", numberOfSkins)
     skinFiles = os.listdir(".\Skins")
     print(skinFiles)
 
-    # Get info
+    #Get info
     creator = input("\nPlease your name: ")
     packName = input("Please your pack's name: ")
     description = input("Please your pack's description: ")
-
-    # Get UUID
+    
+    #Get UUID
     print("Trying to get UUID from the internet...")
     try:
-        # Internet UUID
+        #Internet UUID
         from bs4 import BeautifulSoup
-
         uuidA = getUUID(1)
         uuidB = getUUID(2)
         print("\nSuccess!")
     except:
-        # Manual UUID
+        #Manual UUID
         print("Failed to get UUID from the internet... ")
         print("You might be missing beautifulsoup4: https://pypi.org/project/beautifulsoup4/")
         print("Recommended UUID Generator: https://www.uuidgenerator.net/version4")
         uuidA = input("Please your first UUID: ")
         uuidB = input("Please your second UUID: ")
-
-    # Get skin info
+    
+    #Get skin info
     skinsArr = createSkins(skinFiles)
-
-    # Print Skin Values
+    
+    #Print Skin Values
     print("\n\tSkin Data")
-    for obj in skinsArr:
-        print("Name:", obj.name, "- File:", obj.file, "- Body Type:", obj.bodyType, sep=' ')
-
-    creatorID = (creator + uuidA[len(uuidA) - 4:])
-    # Time to make the files
-    # Copy Skins
+    for obj in skinsArr: 
+        print( "Name:", obj.name,"- File:", obj.file, "- Body Type:", obj.bodyType, sep =' ' )
+        
+    creatorID = (creator + uuidA[len(uuidA)-4:])
+    #Time to make the files
+    #Copy Skins
     copySkins(skinsArr)
     print("\n\nCopied skins to pack.")
-    # Write to Files
+    #Write to Files
     generateManifest(packName, uuidA, version, uuidB)
     print("Created manifest.json.")
     generatePackManifest(uuidA, packName, version, description, uuidB)
@@ -242,9 +223,11 @@ else:
     print("Created skins.json.")
     generateLangs(creatorID, skinsArr, lang_id, packName)
     print("Created " + lang_id + ".lang")
-    # Pack Zip
-    # CODE HERE
+    #Pack Zip
+    #CODE HERE
     makeMCPACK(packName, skinsArr, lang_id)
     print("Packed into .mcpack file")
     shutil.rmtree("./Temp")
     print("\n\tDONE!")
+    
+    
